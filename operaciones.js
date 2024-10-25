@@ -3,7 +3,8 @@ const fs = require('fs');
 const archivo = 'citas.json'
 function registrar(nombre, edad, animal, color, enfermedad) {
     try {
-        let cita = [];
+        let data = fs.readFileSync(archivo, 'utf-8');
+        cita = JSON.parse(data);
         cita.push({nombre, edad, animal, color, enfermedad})
         fs.writeFileSync(archivo, JSON.stringify(cita));
         console.log("Cita guardada con exito")
